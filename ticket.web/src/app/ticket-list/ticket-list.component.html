@@ -1,0 +1,70 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Ticket List</h2>
+
+  <!-- Filter section -->
+  <div class="mb-3">
+    <label for="filterId">Filter by Ticket ID:</label>
+    <input
+      type="text"
+      id="filterId"
+      class="form-control"
+      placeholder="Enter Ticket ID"
+      [(ngModel)]="filterId"
+      (ngModelChange)="filterTickets()"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="filterStatus">Filter by Status:</label>
+    <select id="filterStatus" class="form-control" [(ngModel)]="filterStatus" (ngModelChange)="filterTickets()">
+      <option value="">All</option>
+      <option value="Open">Open</option>
+      <option value="Closed">Closed</option>
+    </select>
+  </div>
+
+  <table class="table table-bordered table-hover text-center">
+    <!-- Green Header with sorting functionality -->
+    <thead class="table-success">
+      <tr>
+        <th (click)="sortBy('ticketId')">
+          Ticket Id
+          <span *ngIf="sortColumn === 'ticketId'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+        </th>
+        <th (click)="sortBy('description')">
+          Description
+          <span *ngIf="sortColumn === 'description'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+        </th>
+        <th (click)="sortBy('status')">
+          Status
+          <span *ngIf="sortColumn === 'status'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+        </th>
+        <th (click)="sortBy('date')">
+          Date
+          <span *ngIf="sortColumn === 'date'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+        </th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <!-- Light Grey Table Body -->
+    <tbody class="table-light">
+      <tr *ngFor="let ticket of filteredTickets">
+        <td>{{ ticket.ticketId }}</td>
+        <td>{{ ticket.description }}</td>
+        <td>
+          <span [ngClass]="{'badge-status badge-open': ticket.status === 'Open', 'badge-status badge-closed': ticket.status === 'Closed'}">
+            {{ ticket.status }}
+          </span>
+        </td>
+        <td>{{ ticket.date | date: 'MMMM-dd-yyyy' }}</td>
+        <td>
+          <a (click)="editTicket(ticket.ticketId)" class="action-link update-link mr-2">Update</a>
+          <a (click)="deleteTicket(ticket.ticketId)" class="action-link delete-link">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a routerLink="/add" class="btn btn-success">Add New</a>
+</div>

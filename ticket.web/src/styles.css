@@ -1,0 +1,18 @@
+
+
+
+/* Define the header style */
+.table th {
+  background-color: #28a745 !important; /* Bootstrap green */
+  color: white; /* White text for contrast */
+}
+
+/* Add border color to table cells */
+.table-bordered td {
+  border: 1px solid #a6a4a4; /* Light grey borders */
+}
+
+
+
+
+
