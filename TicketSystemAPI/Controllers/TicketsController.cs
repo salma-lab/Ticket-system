@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using TicketSystemAPI.Data;
 using TicketSystemAPI.Models;
 
-namespace YourNamespace.Controllers
+namespace TicketSystemApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/tickets")]
     public class TicketsController : ControllerBase
     {
         private readonly TicketContext _context;
