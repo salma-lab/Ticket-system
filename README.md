@@ -7,6 +7,29 @@ markdown
 Copy code
 
 ## Key Components
+SQL Query to Create Tickets Table:
+CREATE DATABASE ticket;
+
+USE ticket;
+
+CREATE TABLE Tickets (
+    TicketId INT PRIMARY KEY IDENTITY(1,1),
+    Description NVARCHAR(255) NOT NULL,
+    Status NVARCHAR(50) NOT NULL CHECK (Status IN ('Open', 'Closed')),
+    Date DATETIME DEFAULT GETDATE()
+);
+INSERT INTO Tickets (TicketID, Description, Status, Date)
+VALUES
+(1002, 'Promotion code issued', 'Open', '2022-05-29'),
+(1003, 'Additional user account', 'Open', '2022-05-27'),
+(1004, 'Change payment method', 'Open', '2022-05-28'),
+(1005, 'Activate account', 'Closed', '2022-05-28'),
+(1006, 'Great job', 'Closed', '2022-05-28'),
+(1008, 'Another Great Job', 'Closed', '2022-05-29'),
+(1000, 'Help with Login', 'Closed', '2022-05-28'),
+(1024, 'Happy Customer', 'Open', '2022-05-29');
+
+
 
 ### Backend - TicketSystemAPI
 
