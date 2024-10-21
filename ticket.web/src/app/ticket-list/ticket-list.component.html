@@ -23,42 +23,42 @@
     </select>
   </div>
 
-  <table class="table table-bordered table-hover text-center">
+  <table class="table table-bordered table-hover">
     <!-- Green Header with sorting functionality -->
     <thead class="table-success">
       <tr>
-        <th (click)="sortBy('ticketId')">
+        <th style="text-align: left;" (click)="sortBy('ticketId')">
           Ticket Id
           <span *ngIf="sortColumn === 'ticketId'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
         </th>
-        <th (click)="sortBy('description')">
+        <th style="text-align: left;" (click)="sortBy('description')">
           Description
           <span *ngIf="sortColumn === 'description'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
         </th>
-        <th (click)="sortBy('status')">
+        <th style="text-align: left;" (click)="sortBy('status')">
           Status
           <span *ngIf="sortColumn === 'status'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
         </th>
-        <th (click)="sortBy('date')">
+        <th style="text-align: left;" (click)="sortBy('date')">
           Date
           <span *ngIf="sortColumn === 'date'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
         </th>
-        <th>Actions</th>
+        <th style="text-align: left;">Actions</th>
       </tr>
     </thead>
 
     <!-- Light Grey Table Body -->
     <tbody class="table-light">
       <tr *ngFor="let ticket of filteredTickets">
-        <td>{{ ticket.ticketId }}</td>
-        <td>{{ ticket.description }}</td>
-        <td>
+        <td style="text-align: left;">{{ ticket.ticketId }}</td>
+        <td style="text-align: left;">{{ ticket.description }}</td>
+        <td style="text-align: left;">
           <span [ngClass]="{'badge-status badge-open': ticket.status === 'Open', 'badge-status badge-closed': ticket.status === 'Closed'}">
             {{ ticket.status }}
           </span>
         </td>
-        <td>{{ ticket.date | date: 'MMMM-dd-yyyy' }}</td>
-        <td>
+        <td style="text-align: left;">{{ ticket.date | date: 'MMMM-dd-yyyy' }}</td>
+        <td style="text-align: left;">
           <a (click)="editTicket(ticket.ticketId)" class="action-link update-link mr-2">Update</a>
           <a (click)="deleteTicket(ticket.ticketId)" class="action-link delete-link">Delete</a>
         </td>
