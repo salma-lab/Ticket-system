@@ -48,9 +48,9 @@
     </thead>
 
     <!-- Light Grey Table Body -->
-    <tbody class="table-light">
-      <tr *ngFor="let ticket of filteredTickets">
-        <td style="text-align: left;">{{ ticket.ticketId }}</td>
+    <tbody class="table-secondary">
+      <tr  *ngFor="let ticket of filteredTickets">
+        <td style="text-align : left ;">{{ ticket.ticketId }}</td>
         <td style="text-align: left;">{{ ticket.description }}</td>
         <td style="text-align: left;">
           <span [ngClass]="{'badge-status badge-open': ticket.status === 'Open', 'badge-status badge-closed': ticket.status === 'Closed'}">
@@ -63,8 +63,14 @@
           <a (click)="deleteTicket(ticket.ticketId)" class="action-link delete-link">Delete</a>
         </td>
       </tr>
+
+      <!-- Row for "Add New" button aligned to the left -->
+      <tr>
+        <td colspan="5" class="text-left">
+          <a routerLink="/add" class="btn btn-success">Add New</a>
+        </td>
+      </tr>
     </tbody>
   </table>
-
-  <a routerLink="/add" class="btn btn-success">Add New</a>
 </div>
+
